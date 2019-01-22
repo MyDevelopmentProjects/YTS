@@ -1,0 +1,62 @@
+<main class="main-wrap">
+    <div class="theme-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 col-md-9 col-sm-8">
+                    <div class="post-widget">
+                        <div class="primary-heading">
+                            <h2>კონტაქტი</h2>
+                        </div>
+                        <div class="map-holder">
+                            <div id="map"></div>
+                        </div>
+                        <div itemscope itemtype="http://schema.org/Organization" style="margin-top: 20px;">
+                            <span itemprop="name"><b>YTS</b> - <span style="color: #dc4a29; font-size: 14px;">შენი სანდო წყარო</span></span><br>
+                            <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                <span itemprop="streetAddress">ბესარიონ ჟღენტის 5</span><br>
+                                <span itemprop="addressLocality">თბილისი</span><br>
+                                <span itemprop="addressRegion">საქართველო</span>
+                                <span itemprop="postalCode">1801</span>
+                            </div>
+                            ტელეფონი:<span itemprop="telephone">( +995 ) <span style="color: #dc4a29; font-size: 14px;">558 533 932</span>, ( +995 ) <span style="color: #dc4a29; font-size: 14px;">571 994 017</span></span>
+                        </div>
+                    </div>
+
+                    <form action="#" id="contact-form" role="form" method="post">
+                        <div class="row">
+
+                            <div class=" col-md-6" id="fname-field">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="form-fname" name="form-fname" placeholder="სახელი, გვარი" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6" id="email-field">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" id="form-email" name="form-email" placeholder="ელ. ფოსტა" required>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12" id="message-field">
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="6" id="form-message" name="form-message" placeholder="ტექსტი" required></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <button type="submit" class="btn red full-width form-btn">გაგზავნა</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 custom-re">
+                    <div class="row">
+                        <div th:replace="sideright :: sideright"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>

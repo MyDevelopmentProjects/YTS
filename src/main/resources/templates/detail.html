@@ -1,0 +1,186 @@
+<div class="main-wrap" id="post-detail" th:fragment="detail">
+    <style>
+        .news-bar {
+            display: none !important;
+        }
+    </style>
+    <script>
+        fbq('track', 'ViewContent');
+    </script>
+    <div class="theme-padding">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-9 col-sm-8">
+                    <div class="content">
+
+                        <!-- blog detail -->
+                        <div class="post-widget light-shadow white-bg">
+
+                            <!-- blog artical -->
+                            <article class="post" itemscope itemtype="http://schema.org/NewsArticle">
+
+                                <!-- blog pot thumb -->
+                                <div class="post-thumb lazyImages" th:src="${post.getImgUrls()}">
+
+                                    <div class="detailImage"></div>
+
+                                    <span class="post-badge"
+                                          th:text="${post.getCategory().getTitle()}"
+                                          th:styleappend="'background-color: ' + ${post.getCategory().getColor()} + ';'"></span>
+                                </div>
+                                <!-- blog pot thumb -->
+
+                                <!-- post detail -->
+                                <div class="post-info p-30">
+
+                                    <h3 itemprop="headline" th:text="${post.getTitle()}"></h3>
+                                    <!-- title -->
+
+                                    <!-- Post meta -->
+                                    <div class="post_meta_holder">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <!-- post meta -->
+                                                <ul class="post-meta">
+                                                    </li>
+                                                    <li itemprop="datePublished" content="date" th:if="${post.showsDate}" th:inline="text">
+                                                        <i class="fa fa-clock-o"></i>[[${post.ago()}]]
+                                                    </li>
+                                                    <li th:if="${post.showsDate}" th:inline="text"><i
+                                                            class="fa fa-eye"></i>[[${post.numberOfViews}]]
+                                                    </li>
+                                                </ul>
+                                                <!-- post meta -->
+                                            </div>
+                                            <div class="col-md-6">
+                                                <!-- social icons -->
+                                                <div class="blog-social">
+
+                                                </div>
+                                                <!-- social icons -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Post meta -->
+                                    <!-- post description -->
+                                    <div class="post-desc">
+                                        <div itemprop="description" th:utext="${post.getDescr()}"></div>
+                                    </div>
+                                    <!-- post description -->
+
+                                    <!-- tags and social icons -->
+                                    <div class="row mb-20">
+
+                                        <!-- populer tags -->
+                                        <div class="col-md-12">
+                                            <div class="blog-tags font-roboto">
+                                                <ul>
+                                                    <li th:each="tag : ${tags}">
+                                                        <a th:href="'/news/' + ${tag.getTag().seoTitle()} + '-' + ${tag.getTag().getId()} + '/tag'" th:text="${tag.getTag().getTitle()}"></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div style="clear: both;"></div>
+                                        <div style="margin-top: 14px"></div>
+
+                                        <div class="col-md-12">
+                                            <div class="blog-social">
+                                                <div class="fb-like"
+                                                     th:data-href="${post.href()}"
+                                                     data-layout="standard"
+                                                     data-action="like"
+                                                     data-size="small"
+                                                     data-show-faces="true"
+                                                     data-share="true"></div>
+                                            </div>
+                                        </div>
+                                        <!-- social icons -->
+
+                                    </div>
+                                    <!-- tags and social icons -->
+
+                                </div>
+
+                                <!-- post detail -->
+
+                            </article>
+                            <!-- blog artical -->
+
+                        </div>
+                        <!-- blog detail -->
+
+                        <div class="post-widget">
+                            <div class="fb-comments"
+                                 data-numposts="10"
+                                 data-width="100%"
+                                 data-colorscheme="light"
+                                 th:data-href="${'https://yts.ge' + post.href()}">
+                            </div>
+                        </div>
+
+                        <!-- Slider Widget -->
+                        <div class="post-widget" th:if="${related.size > 0}">
+
+                            <!-- Heading -->
+                            <div class="primary-heading">
+                                <h2>მსგავსი სიახლეები</h2>
+                            </div>
+                            <!-- Heading -->
+
+                            <!-- post slider -->
+                            <div class="light-shadow gray-bg p-30">
+                                <div id="post-slider-2">
+                                    <div class="post style-1" th:each="item : ${related}" itemscope itemtype="http://schema.org/NewsArticle">
+
+                                        <!-- thumbnail -->
+                                        <div class="post-thumb lazyImages" th:src="${item.getImgUrls()}">
+                                            <a th:href="${item.href()}">
+                                                <img>
+                                                <span class="post-badge"
+                                                      th:text="${item.getCategory().getTitle()}"
+                                                      th:styleappend="'background-color: ' + ${item.getCategory().getColor()} + ';'"></span>
+                                                <div class="thumb-hover">
+                                                    <div class="position-center-center"></div>
+                                                </div>
+                                            </a>
+
+                                        </div>
+                                        <!-- thumbnail -->
+                                        <div class="post-content">
+                                            <ul class="post-meta">
+                                                <li th:if="${item.showsDate}" th:inline="text"><i
+                                                        class="fa fa-clock-o"></i>[[${item.ago()}]]
+                                                </li>
+                                                <li th:inline="text"><i class="fa fa-eye"></i>[[${item.numberOfViews}]]
+                                                </li>
+                                            </ul>
+                                            <h5 class="m-0" itemprop="headline">
+                                                <a th:href="${item.href()}"
+                                                   th:text="${item.getTitle()}"></a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- post slider -->
+
+                        </div>
+                        <!-- Slider Widget -->
+
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-4 col-xs-12 custom-re">
+                    <div class="row">
+                        <div th:replace="sideright :: sideright"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Content -->
+    </div>
+</div>

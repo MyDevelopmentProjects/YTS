@@ -1,0 +1,604 @@
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Description" th:content="${description}">
+    <meta name="keywords" th:content="${title}">
+    <meta name="theme-color" content="#317EFB"/>
+
+    <meta name="author" content="AppLoad.GE"/>
+    <meta property="og:locale" content="ka_GE">
+    <meta property="og:site_name" content="yts.ge">
+
+    <meta th:if="${post != null}" property="og:image" th:content="${post.fbImg()}"/>
+    <meta th:if="${post != null}" property="og:url" th:content="${'https://yts.ge' + post.href()}"/>
+    <meta th:if="${post == null}" property="og:url" content="https://yts.ge" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" th:content="${title}">
+    <meta property="og:description" th:content="${description}">
+
+
+    <meta property="fb:app_id" content="288129032020461">
+    <meta name="Description" content="Put your description here.">
+
+    <!-- Document Title -->
+    <title th:text="${title}"></title>
+
+    <!-- StyleSheets -->
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/plugin.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/transition.css">
+    <link rel="stylesheet" href="/css/icomoon.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+
+    <link rel="stylesheet" id="skins" href="/css/color-1.css" type="text/css" media="all">
+
+    <!-- FontsOnline -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Fira+Sans:400,300italic,300,400italic,500,500italic,700,700italic'
+          rel='stylesheet' type='text/css'>
+
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '193324141592180');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id=193324141592180&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
+
+</head>
+<body>
+
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '288129032020461',
+            xfbml      : true,
+            version    : 'v3.2'
+        });
+        FB.AppEvents.logPageView();
+    };
+
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<div th:replace="preloader :: preloader"></div>
+
+<div class="wrap push">
+
+    <div class="header-wrap">
+
+        <div class="top-bar">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-sm-6 col-xs-6">
+                        <ul class="top-left">
+                            <li><a href="/competition">კონკურსი</a></li>
+                            <li><a href="/vacancy">ვაკანსიები</a></li>
+                            <li><a href="/tests">ტესტები</a></li>
+                            <li><a href="/advertisements">რეკლამა</a></li>
+                            <li><a href="/contact">კონტაქტი</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-sm-6 col-xs-6 r-full-width">
+                        <ul class="top-right text-right">
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <header class="header">
+            <div class="container">
+                <div class="nav-holder">
+
+                    <div class="logo-holder">
+                        <a href="/" class="inner-logo">
+                            <div>Y</div>
+                            <div>T</div>
+                            <div>S</div>
+                        </a>
+                    </div>
+
+                    <div class="cr-navigation">
+
+                        <nav class="cr-nav">
+                            <ul>
+                                <li>
+                                    <a href="/news">სიახლეები</a>
+                                </li>
+                                <li>
+                                    <a href="/news/განათლება-1">განათლება</a>
+                                    <ul>
+                                        <li><a href="/news/მასწავლებლები-6">მასწავლებლები</a></li>
+                                        <li><a href="/news/მოსწავლეები-7">მოსწავლეები</a></li>
+                                        <li><a href="/news/აბიტურიენტები-8">აბიტურიენტები</a></li>
+                                        <li><a href="/news/სტუდენტები-9">სტუდენტები</a></li>
+                                        <li><a href="/news/სკოლამდელი_განათლება-10">სკოლამდელი განათლება</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="/news/ჯანმრთელობა-2">ჯანმრთელობა</a></li>
+                                <li><a href="/news/გართობა-3">გართობა</a></li>
+                                <li><a href="/news/სპორტი-4">სპორტი</a></li>
+                                <li><a href="/news/ბლიცი-5">ბლიცი</a></li>
+                            </ul>
+                        </nav>
+
+                        <ul class="cr-add-nav">
+                            <!--<li><a href="#" class="icon-search md-trigger" data-modal="search-popup"></a></li>-->
+                            <li><a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a></li>
+                        </ul>
+
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+    </div>
+
+    <!-- Banner slider -->
+    <div th:if="${slider != null && slider.getTotalPages() > 0}" class="banner-slider">
+
+        <!-- slider main slides -->
+        <div id="ninja-slider" class="ninja-slider">
+            <div class="slider-inner">
+                <ul>
+                    <li th:each="item : ${slider}">
+                        <a class="ns-img" th:href="${'/uploads/' + item.imgUrl}"></a>
+                        <!-- caption -->
+                        <div class="caption-holder">
+                            <div class="container p-relative">
+                                <div class="caption">
+                                    <span th:text="${item.category.title}"
+                                          th:styleappend="'background-color: ' + ${item.category.color} + ';'"></span>
+                                    <h2><a th:href="${item.href}" th:text="${item.title}"></a></h2>
+                                    <div class="post-meta">
+                                        <!--<span th:inline="text"><i
+                                                class="icon-user"></i>[[${item.createdBy.username}]]</span>-->
+                                        <span th:if="${item.showsDate}" th:inline="text"><i class="icon-clock"></i>[[${item.ago()}]]</span>
+                                    </div>
+                                    <p th:text="${item.smallDesc}"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- caption -->
+                    </li>
+                </ul>
+                <div class="fs-icon" title="Expand/Close"></div>
+            </div>
+        </div>
+        <!-- slider main slides -->
+
+        <!-- Banner Thumnail -->
+        <div class="banner-thumbnail">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-5 col-xs-6 pull-right">
+                        <div id="thumbnail-slider">
+                            <div class="inner">
+                                <ul class="post-wrap-list">
+
+                                    <li th:each="item : ${slider}">
+                                        <div class="post-wrap small-post">
+                                            <div class="post-thumb">
+                                                <img th:src="${'/uploads/' + item.imgUrl}" th:alt="${item.title}">
+                                            </div>
+                                            <div class="post-content">
+                                                <h4><a href="#" th:text="${item.title}"></a></h4>
+                                                <ul class="post-meta">
+                                                    <li th:if="${item.showsDate}" th:inline="text"><i
+                                                            class="icon-clock"></i>[[${item.ago()}]]
+                                                    </li>
+                                                    <!--<li th:inline="text"><i class="icon-user"></i>[[${item.createdBy.username}]]
+                                                    </li>-->
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </div>
+        <!-- Banner Thumnail -->
+
+    </div>
+
+    <div th:replace="breakingnews :: breakingnews"></div>
+
+    <div th:replace="${pg}"></div>
+
+    <!-- Footer Starts -->
+    <footer class="footer" th:fragment="footer"  xmlns:th="http://www.w3.org/1999/xhtml">
+
+        <!-- Footer Columns -->
+        <div class="footer-columns">
+            <div class="container">
+                <div class="row position-r theme-padding">
+
+                    <!-- widget -->
+                    <div class="col-lg-3 col-sm-3 col-xs-6 r-full-width">
+                        <h4>მისამართი</h4>
+                        <!-- Contact widget -->
+                        <div class="footer-widget">
+                            <div class="contact-list" itemscope itemtype="http://schema.org/Organization">
+
+                                <!-- Logo Holder -->
+                                <a href="index.html" class="inner-logo-2"></a>
+                                <!-- Logo Holder -->
+
+                                <ul itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                    <li><i itemprop="streetAddress" class="fa fa-map-marker"></i>ბესარიონ ჟღენტის 5</li>
+                                    <li><i itemprop="addressLocality" class="fa fa-map-marker"></i>თბილისი</li>
+                                    <li><i itemprop="telephone" class="fa fa-headphones"></i>( +995 ) 558 533 932</li>
+                                    <li><i class="fa fa-phone"></i>( +995 ) 571 994 017</li>
+                                    <li><i class="fa fa-envelope-o"></i>info@yts.ge</li>
+                                    <li><i class="fa fa-globe"></i>www.yts.ge</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Contact widget -->
+
+                    </div>
+                    <!-- widget -->
+
+                    <!-- widget -->
+                    <div class="col-lg-3 col-sm-3 col-xs-6 r-full-width">
+                        <!-- populer post  -->
+                        <div class="footer-widget">
+                            <h4>ბოლოს ატვირთულები</h4>
+                            <div class="recent-post-widget">
+                                <ul>
+                                    <li  th:each="item : ${recents}">
+                                        <!-- blog post -->
+                                        <div class="post-wrap small-post">
+                                            <!-- blog img -->
+                                            <div class="post-thumb lazyImages" th:src="${item.getImgUrls()}">
+                                                <img>
+                                            </div>
+                                            <!-- blog img -->
+
+                                            <!-- post detail -->
+                                            <div class="post-content">
+                                                <h5>
+                                                    <a th:href="${item.href()}" th:text="${item.shortTitle(6)}"></a>
+                                                </h5>
+                                                <!-- post meta -->
+                                                <ul class="post-meta">
+                                                    <li th:if="${item.showsDate}" th:inline="text"><i
+                                                            class="fa fa-clock-o"></i>[[${item.ago()}]]
+                                                    </li>
+                                                    <li th:inline="text"><i class="fa fa-eye"></i>[[${item.numberOfViews}]]
+                                                    </li>
+                                                </ul>
+                                                <!-- post meta -->
+                                            </div>
+                                            <!-- post detail -->
+                                        </div>
+                                        <!-- blog post -->
+                                    </li>
+
+                                </ul>
+
+                            </div>
+                        </div>
+                        <!-- populer post  -->
+                    </div>
+                    <!-- widget -->
+
+                    <!-- widget -->
+                    <div class="col-lg-3 col-sm-3 col-xs-6 r-full-width">
+                        <!-- quick links -->
+                        <div class="footer-widget mb-30">
+                            <h4>საჭირო ბმულები</h4>
+                            <div class="quick-links">
+                                <ul>
+                                    <li th:each="item : ${quicklinks}">
+                                        <a th:href="${item.href}"
+                                           th:text="${item.title}"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- quick links -->
+
+                    </div>
+                    <!-- widget -->
+
+                    <!-- widget -->
+                    <div class="col-lg-3 col-sm-3 col-xs-6 r-full-width">
+
+                        <!-- populer tags -->
+                        <div class="footer-widget">
+                            <h4>პოპულარული თეგები</h4>
+                            <div class="populer-tags">
+                                <ul th:if="${allTags != null && allTags.size() > 0}">
+                                    <li th:each="item: ${allTags}">
+                                        <a th:href="'/news/' + ${item.seoTitle()} + '-' + ${item.id} + '/tag'" th:text="${item.title}"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- populer tags -->
+
+                    </div>
+                    <!-- widget -->
+
+                    <!-- back To Button -->
+                    <span id="scrollup" class="scrollup"><i class="fa fa-angle-up"></i></span>
+                    <!-- back To Button -->
+
+                </div>
+            </div>
+        </div>
+        <!-- Footer Columns -->
+
+        <!-- Copyright Bar -->
+        <div class="sub-footer">
+            <div class="container">
+                <div class="copyright-bar">
+                    <p>AppLoad.GE <i class="fa fa-copyright"></i> 2018, ყველა უფლება დაცულია</p>
+                    <ul>
+                        <li>
+                            <div id="top-ge-counter-container" data-site-id="111611"></div>
+                            <script async src="//counter.top.ge/counter.js" rel="noopener"></script>
+                        </li>
+                        <li><a href="/tests">ტესტები</a></li>
+                        <li><a href="/news">სიახლეები</a></li>
+                        <li><a href="/advertisements">რეკლამა</a></li>
+                        <li><a href="/contact">კონტაქტი</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright Bar -->
+
+    </footer>
+    <!-- Footer Starts -->
+
+</div>
+
+<div id="menu" class="res-menu" role="navigation">
+    <div class="res-menu-holder">
+        <div class="logo-holder" style="padding: 14px 0;"></div>
+        <ul class="res-nav">
+            <li>
+                <a href="/news">სიახლეები</a>
+            </li>
+            <li>
+                <a data-toggle="collapse" href="#list-1"><i class="fa fa-angle-down pull-right"></i>განათლება</a>
+                <ul id="list-1" class="collapse sub-list">
+                    <li><a href="/news/მასწავლებლები-6">მასწავლებლები</a></li>
+                    <li><a href="/news/მოსწავლეები-7">მოსწავლეები</a></li>
+                    <li><a href="/news/აბიტურიენტები-8">აბიტურიენტები</a></li>
+                    <li><a href="/news/სტუდენტები-9">სტუდენტები</a></li>
+                    <li><a href="/news/სკოლამდელი_განათლება-10">სკოლამდელი განათლება</a></li>
+                </ul>
+            </li>
+            <li><a href="/news/ჯანმრთელობა-2">ჯანმრთელობა</a></li>
+            <li><a href="/news/გართობა-3">გართობა</a></li>
+            <li><a href="/news/სპორტი-4">სპორტი</a></li>
+            <li><a href="/news/ბლიცი-5">ბლიცი</a></li>
+            <li><a>რეკლამა</a></li>
+        </ul>
+        <p><i class="fa fa-copyright"></i> <a href="https://AppLoad.ge" rel="noopener" rel="noopener" target="_blank">AppLoad.GE</a></p>
+    </div>
+</div>
+
+<div class="md-modal md-effect-1 login-modal font-oswald" id="register-popup">
+    <div class="md-content">
+
+        <!-- login socila buttons -->
+        <ul class="login-social">
+            <li class="fb"><a href="#"><i class="fa fa-facebook"></i>login with facebook</a></li>
+            <li class="gmail"><a href="#"><i class="fa fa-google-plus"></i>login with goolge+</a></li>
+        </ul>
+        <!-- login socila buttons -->
+
+        <!-- or -->
+        <span class="or-seprator">or</span>
+        <!-- or -->
+
+        <!-- sign up form -->
+        <form class="signup-form">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input type="text" class="form-control" placeholder="First name*">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input type="text" class="form-control" placeholder="Last name">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+                <input type="text" class="form-control" placeholder="Your Email*">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <input type="text" class="form-control" placeholder="Password">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <input type="text" class="form-control" placeholder="confirm password">
+            </div>
+            <div class="form-group">
+                <a href="#" class="btn full-width green">get started</a>
+            </div>
+            <p>Already a member ? <a href="#" class="text-red">Login</a></p>
+        </form>
+        <!-- sign up form -->
+        <a class="md-close pull-right" href="#"></a>
+    </div>
+</div>
+<!-- register model -->
+
+<!-- login model -->
+<div class="md-modal md-effect-1 login-modal font-oswald" id="login-popup">
+    <div class="md-content">
+
+        <!-- login socila buttons -->
+        <ul class="login-social">
+            <li class="fb"><a href="#"><i class="fa fa-facebook"></i>login with facebook</a></li>
+            <li class="gmail"><a href="#"><i class="fa fa-google-plus"></i>login with goolge+</a></li>
+        </ul>
+        <!-- login socila buttons -->
+
+        <!-- or -->
+        <span class="or-seprator">or</span>
+        <!-- or -->
+
+        <!-- serach form -->
+        <form class="login-form">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+                <input type="text" class="form-control" placeholder="Enter your email">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                <input type="password" class="form-control" placeholder="*********">
+            </div>
+            <div class="form-group">
+                <a href="#" class="btn full-width green">login</a>
+            </div>
+            <div class="form-group">
+                <a href="#" class="forgot-password pull-right">Forgot password?</a>
+                <div class="checkbox checkbox-inline">
+                    <label>
+                        <input type="checkbox"> Remember me
+                    </label>
+                </div>
+            </div>
+            <p>Don't have a account ? <a href="#" class="text-red">Sign up</a></p>
+
+            <a class="md-close pull-right" href="#"></a>
+        </form>
+        <!-- serach form -->
+
+    </div>
+</div>
+<!-- login model -->
+
+<!-- serach modal -->
+<div class="md-modal md-effect-7 search-modal font-oswald" id="search-popup">
+    <div class="md-content">
+        <!-- serach form -->
+        <form class="search-form">
+            <input class="form-control" placeholder="Type &amp; hit enter" type="text">
+        </form>
+        <a class="md-close pull-right fa fa-times" href="#"></a>
+        <!-- serach form -->
+    </div>
+</div>
+<!-- serach modal -->
+
+<!-- overlay -->
+<div class="md-overlay"></div>
+<!-- overlay -->
+
+<!-- Java Script -->
+<script src="/js/vendor/jquery.js"></script>
+<script src="/js/vendor/bootstrap.min.js"></script>
+<script>
+    var initMap = function() {
+        $("#map").gmap3({
+            marker: {
+                address: "5 ბესარიონ ჟღენტის ქუჩა, Tbilisi"
+            },
+            map: {
+                options: {
+                    zoom: 16,
+                    scrollwheel: false,
+                }
+            },
+        });
+    }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD_HTMLIOaoS5QP0v4red4S4av9UhfGvmY&callback=initMap"
+        type="text/javascript"></script>
+<script src="/js/gmap3.min.js"></script>
+<script src="/js/parallax.js"></script>
+<script src="/js/ninja-slider.js"></script>
+<script src="/js/thumbnail-slider.js"></script>
+<script src="/js/countdown.js"></script>
+<script src="/js/modal.js"></script>
+<script src="/js/classie.js"></script>
+<script src="/js/big-slide.js"></script>
+<script src="/js/owl-carousel.js"></script>
+<script src="/js/jquery-mw.js"></script>
+<script src="/js/scrollbar.js"></script>
+<script src="/js/prettyPhoto.js"></script>
+<script src="/js/contact-form.js"></script>
+<script src="/js/bxslider.js"></script>
+<script src="/js/isotope.pkgd.js"></script>
+<script src="/js/main.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126798268-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-126798268-1');
+
+    $(document).on('click', 'a', function (e) {
+        ga('send', {
+            hitType: 'event',
+            eventCategory: 'User Clicks',
+            eventAction: 'URL on click',
+            eventLabel: e.target.href
+        });
+    });
+
+
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "url": "https://www.yts.ge/",
+  "name": "შენი სანდო წყარო",
+   "author": {
+      "@type": "Person",
+      "name": "George Vashakidze"
+    },
+  "description": "სიახლეები, ახალი ამბები, განათლება, მეცნიერება, ბლიცი, ჯანმრთელობა, გართობა, სპორტი, რეკლამა, მეგზური, ვიდეო",
+  "publisher": "AppLoad.GE",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.yts.ge/?s={search_term}",
+    "query-input": "required name=search_term" }
+    }
+</script>
+
+</body>
+</html>

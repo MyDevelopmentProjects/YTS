@@ -1,0 +1,73 @@
+<div class="wrapper" th:fragment="news">
+    <div class="theme-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 cat_title_holder">
+                    <ul class="tm-breadcrum">
+                        <li><a href="/">მთავარი</a></li>
+                        <li th:text="${pg_title}"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9 col-sm-8">
+
+                    <div class="post-widget m-0">
+
+                        <div class="p-30 light-shadow white-bg">
+                            <ul th:if="${news.content.size() > 0}" class="list-posts haspad" id="catPage_listing">
+                                <li th:each="item : ${news}"  itemscope itemtype="http://schema.org/NewsArticle">
+                                    <div class="row">
+                                        <div class="col-sm-4 col-xs-5">
+                                            <div class="post-thumb lazyImages" th:src="${item.getImgUrls()}">
+                                                <a th:href="${item.href()}">
+                                                    <img>
+                                                    <div class="thumb-hover"></div>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-8 col-xs-7">
+
+                                            <div class="post-content">
+                                                <h4 itemprop="headline">
+                                                    <a th:href="${item.href()}" th:text="${item.shortTitle(15)}"></a>
+                                                </h4>
+                                                <ul class="post-meta">
+                                                    <li th:if="${item.showsDate}" th:inline="text"><i
+                                                            class="fa fa-clock-o"></i>[[${item.ago()}]]
+                                                    </li>
+                                                </ul>
+                                                <p>
+                                                    <span itemprop="description" th:utext="${item.shortDesc(32)}"></span>
+                                                    <br/><a th:href="${item.href()}" class="read-more">სრულად
+                                                    ნახვა...</a>
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <h3 th:if="${news.content.size() == 0}">ჩანაწერები ვერ მოიძებნა</h3>
+                        </div>
+
+                        <ul class="pagination" th:utext="${pagination}">
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-3 col-sm-4 col-xs-12 custom-re">
+                    <div class="row">
+                        <div th:replace="sideright :: sideright"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

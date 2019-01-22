@@ -1,0 +1,691 @@
+<div class="wrapper" th:fragment="main">
+    <div class="theme-padding">
+        <div class="container">
+            <div class="row" th:if="${topCenterHor.getTotalPages() > 0}">
+                <div class="col-md-12">
+                    <div class="post-widget mb-60">
+                        <div class="primary-heading">
+                            <h2 onclick="window.location.href='/news'">უახლესი ამბები</h2>
+                        </div>
+                        <div class="white-bg p-30 light-shadow slider-post" id="sliderPost">
+                            <div id="post-slider-1">
+
+                                <div class="post style-1" th:each="item : ${topCenterHor}">
+
+                                    <div class="post-thumb lazyImages" th:src="${item.getPost().getImgUrls()}">
+                                        <a th:href="${item.getPost().href()}">
+                                            <img class="item-image">
+                                            <span class="post-badge"
+                                                  th:text="${item.getPost().getCategory().getTitle()}"
+                                                  th:styleappend="'background-color: ' + ${item.getPost().getCategory().getColor()} + ';'"></span>
+                                            <div class="thumb-hover">
+                                                <div class="position-center-center"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="post-content">
+                                        <h4><a th:href="${item.getPost().href()}"
+                                               th:text="${item.getPost().shortTitle(15)}"></a></h4>
+                                        <ul class="post-meta m-0">
+
+                                            <li th:if="${item.post.showsDate}" th:inline="text"><i
+                                                    class="fa fa-clock-o"></i>[[${item.post.ago()}]]
+                                            </li>
+                                            <li th:inline="text"><i class="fa fa-eye"></i>[[${item.post.numberOfViews}]]
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <!-- მარცხენა საიდბარი -->
+
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 r-hidden">
+
+                    <div class="aside-add">
+                        <a href="http://tbilisirc.ge/">
+                            <img src="/uploads/banners/ft190X500.png" alt="FreedomTech TBILISI RC 2018">
+                        </a>
+                    </div>
+
+                    <aside class="aside">
+
+                        <!-- trending -->
+                        <div class="widget" th:if="${megzuri.getTotalPages() > 0}">
+                            <h3>მეგზური</h3>
+                            <div class="video-posts">
+                                <ul>
+                                    <li th:each="item : ${megzuri}">
+                                        <div class="post style-1">
+                                            <div class="post-thumb lazyImages" th:src='${item.getPost().getImgUrls()}'>
+                                                <img th:alt="${item.getPost().getTitle()}">
+                                            </div>
+                                            <div class="post-content">
+                                                <h4>
+                                                    <a th:href="${item.getPost().href()}"
+                                                       th:text="${item.getPost().shortTitle(15)}"></a>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- trending -->
+
+                        <!-- reviews -->
+                        <div class="widget" th:if="${blic.getTotalPages() > 0}">
+                            <h3>ბლიცი</h3>
+                            <div class="video-posts">
+                                <ul>
+                                    <li th:each="item : ${blic}">
+                                        <div class="post style-1">
+                                            <div class="post-thumb lazyImages" th:src='${item.getPost().getImgUrls()}'>
+                                                <img th:alt="${item.getPost().getTitle()}">
+                                            </div>
+                                            <div class="post-content">
+                                                <h4>
+                                                    <a th:href="${item.getPost().href()}"
+                                                       th:text="${item.getPost().shortTitle(15)}"></a>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- reviews -->
+
+                        <!-- video posts -->
+                        <div class="widget" th:if="${videos.getTotalPages() > 0}">
+                            <h3>ვიდეო პოსტები</h3>
+
+                            <div class="video-posts">
+                                <ul>
+                                    <li th:each="item : ${videos}">
+                                        <div class="post style-1">
+                                            <div class="post-thumb lazyImages" th:src='${item.getPost().getImgUrls()}'>
+                                                <img th:alt="${item.getPost().getTitle()}">
+                                                <a th:href="${item.getPost().href()}"><i class="fa fa-play"></i></a>
+                                            </div>
+                                            <div class="post-content">
+                                                <h4>
+                                                    <a th:href="${item.getPost().href()}"
+                                                       th:text="${item.getPost().shortTitle(15)}"></a>
+                                                </h4>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <!-- video posts -->
+
+
+                    </aside>
+
+                </div>
+
+                <!-- END OF მარცხენა საიდბარი  -->
+
+
+                <!-- შუა კონტენტი -->
+
+                <div class="col-lg-7 col-md-7 col-sm-9 col-xs-8 r-full-width">
+
+                    <!-- პირველი ბანერი -->
+                    <div class="add-banner text-center m-0">
+
+                        <a href="https://dialogi.ge/" target="_blank" rel="noopener">
+                            <img src="/uploads/banners/dialogi.png" alt="დიალოგი. პოზიტივი შენს ცხოვრებაში">
+                        </a>
+                        <!-- Revive Adserver iFrame Tag - Generated with Revive Adserver v4.1.4 -->
+                        <!--<iframe id='a3032a15' name='a3032a15' src='http://adv.yts.ge/www/delivery/afr.php?zoneid=2&amp;cb=10'
+                                frameborder='0' scrolling='no' width='728' >
+                            <a href='http://adv.yts.ge/www/delivery/ck.php?n=ae97afff&amp;cb=250' target='_blank'>
+                                <img src='http://adv.yts.ge/www/delivery/avw.php?zoneid=2&amp;cb=250&amp;n=ae97afff' border='0' alt='' />
+                            </a>
+                        </iframe>-->
+                    </div>
+                    <!-- პირველი ბანერი -->
+
+                    <!-- განათლება -->
+                    <div class="post-widget" th:if='${innerCentralMultiCol.containsKey("obj0")}'>
+
+                        <!-- Heading -->
+                        <div class="primary-heading">
+                            <h2 onclick="window.location.href='/news/განათლება-1'">განათლება</h2>
+                        </div>
+                        <!-- Heading -->
+
+                        <!-- post details -->
+                        <div class="post-detail-wrap white-bg light-shadow p-30">
+                            <div class="row">
+
+                                <!-- long post -->
+                                <div class="col-lg-6 col-sm-6 col-xs-12 smb-30">
+                                    <div class="post style-1">
+
+                                        <!-- Post Img -->
+                                        <div th:if='${innerCentralMultiCol.get("obj0")} != null'
+                                             class="post-thumb lazyImages"
+                                             th:src='${innerCentralMultiCol.get("obj0").getPost().getImgUrls()}'>
+                                            <a th:href='${innerCentralMultiCol.get("obj0").getPost().href()}'>
+                                                <img th:alt='${innerCentralMultiCol.get("obj0").getPost().getTitle()}'>
+                                                <span class="post-badge"
+                                                      th:styleappend="'background-color: ' + ${innerCentralMultiCol.get('obj0').getPost().getCategory().getColor()} + ';'"
+                                                      th:text='${innerCentralMultiCol.get("obj0").getPost().getCategory().getTitle()}'></span>
+                                                <div class="thumb-hover">
+                                                    <div class="position-center-center"></div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <!-- Post Img -->
+
+                                        <!-- Post Detail -->
+                                        <div class="post-content">
+                                            <h4>
+                                                <a th:href='${innerCentralMultiCol.get("obj0").getPost().href()}'
+                                                   th:text='${innerCentralMultiCol.get("obj0").getPost().shortTitle(15)}'></a>
+                                            </h4>
+                                            <ul class="post-meta">
+                                                <li th:if='${innerCentralMultiCol.get("obj0").getPost().showsDate}'
+                                                    th:inline="text">
+                                                    <i class="fa fa-clock-o"></i>[[${innerCentralMultiCol.get("obj0").getPost().ago()}]]
+                                                </li>
+                                                <li th:inline="text"><i class="fa fa-eye"></i>[[${innerCentralMultiCol.get("obj0").getPost().numberOfViews}]]
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <p>
+                                            <span th:utext='${innerCentralMultiCol.get("obj0").getPost().shortDesc(10)}'></span>
+                                            <a th:href='${innerCentralMultiCol.get("obj0").getPost().href()}'
+                                               class="read-more">სრულად ნახვა</a></p>
+
+                                    </div>
+                                </div>
+                                <!-- long post -->
+
+                                <!-- Post List -->
+                                <div class="col-lg-6 col-sm-6 col-xs-12">
+                                    <ul class="post-wrap-list">
+                                        <li class="post-wrap big-post" th:each="i:${#numbers.sequence(1, 4)}">
+                                            <div th:if='${innerCentralMultiCol.containsKey("obj" + i)}'
+                                                 class="post-thumb lazyImages"
+                                                 th:src='${innerCentralMultiCol.get("obj" + i).getPost().getImgUrls()}'>
+
+                                                <a th:href='${innerCentralMultiCol.get("obj" + i).getPost().href()}'>
+                                                    <img th:alt='${innerCentralMultiCol.get("obj" + i).getPost().getTitle()}'>
+                                                    <div class="thumb-hover">
+                                                        <div class="position-center-center"></div>
+                                                    </div>
+                                                </a>
+
+                                            </div>
+                                            <div class="post-content"
+                                                 th:if='${innerCentralMultiCol.containsKey("obj" + i)}'>
+                                                <h4>
+                                                    <a th:href='${innerCentralMultiCol.get("obj" + i).getPost().href()}'
+                                                       th:text='${innerCentralMultiCol.get("obj" + i).getPost().shortTitle(10)}'></a>
+                                                </h4>
+                                                <ul class="post-meta">
+                                                    <li th:if='${innerCentralMultiCol.get("obj" + i).getPost().showsDate}'
+                                                        th:inline="text">
+                                                        <i class="fa fa-clock-o"></i>[[${innerCentralMultiCol.get("obj"
+                                                        + i).getPost().ago()}]]
+                                                    </li>
+                                                    <li th:inline="text"><i class="fa fa-eye"></i>[[${innerCentralMultiCol.get("obj"
+                                                        + i).getPost().numberOfViews}]]
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- Post List -->
+
+                            </div>
+                        </div>
+                        <!-- post details -->
+
+                    </div>
+                    <!-- განათლება -->
+
+                    <!-- მეორე ბანერი -->
+                    <div class="add-banner text-center m-0">
+                        <a href="https://www.facebook.com/schoolprogresstbilisi/" target="_blank" rel="noopener">
+                            <img src="/uploads/banners/progress.jpg"
+                                 alt="American International High School-College Progress - Tbilisi">
+                        </a>
+                    </div>
+                    <!-- მეორე ბანერი -->
+
+                    <!-- გართობა, არტი, ჯანმრთელობა -->
+                    <div class="post-widget">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
+                                 th:if='${topCenterTwoColLeft.containsKey("obj0")}'>
+
+                                <div class="primary-heading">
+                                    <h2 onclick="window.location.href='/news/გართობა-3'">გართობა <span
+                                            class="inner-art">& Art</span></h2>
+                                </div>
+
+                                <div class="post style-2 white-bg light-shadow">
+
+                                    <div class="post-thumb lazyImages"
+                                         th:src='${topCenterTwoColLeft.get("obj0").getPost().getImgUrls()}'>
+                                        <a th:href='${topCenterTwoColLeft.get("obj0").getPost().href()}'>
+                                            <img th:alt='${topCenterTwoColLeft.get("obj0").getPost().getTitle()}'>
+                                            <span class="post-badge"
+                                                  th:styleappend="'background-color: ' + ${topCenterTwoColLeft.get('obj0').getPost().getCategory().getColor()} + ';'"
+                                                  th:text='${topCenterTwoColLeft.get("obj0").getPost().getCategory().getTitle()}'> </span>
+                                            <div class="thumb-hover">
+                                                <div class="position-center-center"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <!-- Post Detil -->
+                                    <div class="post-content cat-listing">
+                                        <h4>
+                                            <a th:href='${topCenterTwoColLeft.get("obj0").getPost().href()}'
+                                               th:text='${topCenterTwoColLeft.get("obj0").getPost().shortTitle(10)}'></a>
+                                        </h4>
+                                        <p></p>
+
+                                        <ul class="post-wrap-list">
+
+                                            <li class="post-wrap big-post" th:each="i:${#numbers.sequence(1, 2)}">
+                                                <div class="post-thumb lazyImages"
+                                                     th:if='${topCenterTwoColLeft.containsKey("obj" + i)}'
+                                                     th:src='${topCenterTwoColLeft.get("obj" + i).getPost().getImgUrls()}'>
+                                                    <img th:alt='${topCenterTwoColLeft.get("obj" + i).getPost().getTitle()}'>
+                                                </div>
+                                                <div class="post-content"
+                                                     th:if='${topCenterTwoColLeft.containsKey("obj" + i)}'>
+                                                    <h4>
+                                                        <a th:href='${topCenterTwoColLeft.get("obj" + i).getPost().href()}'
+                                                           th:text='${topCenterTwoColLeft.get("obj" + i).getPost().shortTitle(15)}'></a>
+                                                    </h4>
+                                                    <ul class="post-meta">
+                                                        <li th:if='${topCenterTwoColLeft.get("obj" + i).getPost().showsDate}'
+                                                            th:inline="text">
+                                                            <i class="fa fa-clock-o"></i>[[${topCenterTwoColLeft.get("obj"
+                                                            + i).getPost().ago()}]]
+                                                        </li>
+                                                        <li th:inline="text"><i class="fa fa-eye"></i>[[${topCenterTwoColLeft.get("obj"
+                                                            + i).getPost().numberOfViews}]]
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <!-- Post Detail -->
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
+                                 th:if='${topCenterTwoColRight.containsKey("obj0")}'>
+
+                                <div class="primary-heading">
+                                    <h2 onclick="window.location.href='/news/ჯანმრთელობა-2'">ჯანმრთელობა</h2>
+                                </div>
+
+                                <div class="post style-2 white-bg light-shadow">
+
+                                    <div class="post-thumb lazyImages"
+                                         th:src='${topCenterTwoColRight.get("obj0").getPost().getImgUrls()}'>
+                                        <a th:href='${topCenterTwoColRight.get("obj0").getPost().href()}'>
+                                            <img th:alt='${topCenterTwoColRight.get("obj0").getPost().getTitle()}'>
+                                            <span class="post-badge"
+                                                  th:styleappend="'background-color: ' + ${topCenterTwoColRight.get('obj0').getPost().getCategory().getColor()} + ';'"
+                                                  th:text='${topCenterTwoColRight.get("obj0").getPost().getCategory().getTitle()}'> </span>
+                                            <div class="thumb-hover">
+                                                <div class="position-center-center"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="post-content cat-listing">
+                                        <h4>
+                                            <a th:href='${topCenterTwoColRight.get("obj0").getPost().href()}'
+                                               th:text='${topCenterTwoColRight.get("obj0").getPost().shortTitle(10)}'></a>
+                                        </h4>
+                                        <p></p>
+                                        <ul class="post-wrap-list">
+
+
+                                            <li class="post-wrap big-post" th:each="i:${#numbers.sequence(1,2)}">
+
+                                                <div class="post-thumb lazyImages"
+                                                     th:if='${topCenterTwoColRight.containsKey("obj" + i)}'
+                                                     th:src='${topCenterTwoColRight.get("obj" + i).getPost().getImgUrls()}'>
+                                                    <img th:alt='${topCenterTwoColRight.get("obj" + i).getPost().getTitle()}'>
+                                                </div>
+                                                <div class="post-content"
+                                                     th:if='${topCenterTwoColRight.containsKey("obj" + i)}'>
+                                                    <h4>
+                                                        <a th:href='${topCenterTwoColRight.get("obj" + i).getPost().href()}'
+                                                           th:text='${topCenterTwoColRight.get("obj" + i).getPost().shortTitle(15)}'></a>
+                                                    </h4>
+                                                    <ul class="post-meta">
+                                                        <li th:if='${topCenterTwoColRight.get("obj" + i).getPost().showsDate}'
+                                                            th:inline="text">
+                                                            <i class="fa fa-clock-o"></i>[[${topCenterTwoColRight.get("obj"
+                                                            + i).getPost().ago()}]]
+                                                        </li>
+                                                        <li th:inline="text"><i class="fa fa-eye"></i>[[${topCenterTwoColRight.get("obj"
+                                                            + i).getPost().numberOfViews}]]
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- გართობა, არტი, ჯანმრთელობა -->
+
+                    <!-- მესამე ბანერი -->
+                    <div class="add-banner text-center m-0">
+                        <a href="https://systemjet.ge" target="_blank" rel="noopener">
+                            <img src="/uploads/banners/systemjet.jpg" alt="SystemJet">
+                        </a>
+                    </div>
+                    <!-- მესამე ბანერი -->
+
+                    <!-- სპორტული სიახლეები -->
+                    <div class="post-widget" th:if="${topCenterVerticalThreeCol.getTotalPages() > 0}">
+
+                        <div class="primary-heading">
+                            <h2 onclick="window.location.href='/news/სპორტი-4'">სპორტული სიახლეები</h2>
+                        </div>
+
+                        <div class="p-30 light-shadow white-bg">
+                            <ul class="list-posts">
+                                <li class="row no-gutters" th:each="item : ${topCenterVerticalThreeCol}">
+
+                                    <div class="col-sm-4 col-xs-12">
+                                        <div class="post-thumb lazyImages" th:src="${item.getPost().getImgUrls()}">
+                                            <img th:alt='${item.getPost().getTitle()}'>
+                                            <span class="post-badge"
+                                                  th:styleappend="'background-color: ' + ${item.getPost().getCategory().getColor()} + ';'"
+                                                  th:text='${item.getPost().getCategory().getTitle()}'> </span>
+                                            <div class="thumb-hover">
+                                                <div class="position-center-center">
+                                                    <a th:href='${item.getPost().href()}'
+                                                       th:text='${item.getPost().shortTitle(15)}'></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-8 col-xs-12">
+                                        <div class="post-content">
+                                            <h4><a th:href='${item.getPost().href()}'
+                                                   th:text='${item.getPost().shortTitle(15)}'></a></h4>
+                                            <ul class="post-meta">
+                                                <li th:if='${item.getPost().showsDate}'
+                                                    th:inline="text">
+                                                    <i class="fa fa-clock-o"></i>[[${item.getPost().ago()}]]
+                                                </li>
+                                                <li th:inline="text"><i class="fa fa-eye"></i>[[${item.getPost().numberOfViews}]]
+                                                </li>
+                                            </ul>
+                                            <p>
+                                                <span th:utext='${item.getPost().shortDesc(15)}'></span>
+                                                <a th:href='${item.getPost().href()}' class="read-more">სრულად
+                                                    ნახვა...</a></p>
+                                        </div>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <!-- სპორტული სიახლეები -->
+
+                    <!-- მეოთხე ბანერი -->
+                    <div class="add-banner text-center m-0">
+                        <a href="https://appload.ge" rel="noopener" target="_blank">
+                            <img src="/uploads/banners/appload.jpg" alt="Future Development">
+                        </a>
+                    </div>
+                    <!-- მეოთხე ბანერი -->
+
+
+                    <!-- წიგნები, სიტყვა-სიტყვით -->
+                    <div class="post-widget">
+                        <div class="row">
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
+                                 th:if='${innerCenterTwoColLeft.containsKey("obj0")}'>
+
+                                <div class="primary-heading">
+                                    <h2>წიგნები</h2>
+                                </div>
+
+                                <div class="post style-2 white-bg light-shadow">
+
+                                    <div class="post-thumb lazyImages"
+                                         th:src='${innerCenterTwoColLeft.get("obj0").getPost().getImgUrls()}'>
+                                        <a th:href='${innerCenterTwoColLeft.get("obj0").getPost().href()}'>
+                                            <img th:alt='${innerCenterTwoColLeft.get("obj0").getPost().getTitle()}'>
+                                            <span class="post-badge"
+                                                  th:styleappend="'background-color: ' + ${innerCenterTwoColLeft.get('obj0').getPost().getCategory().getColor()} + ';'"
+                                                  th:text='${innerCenterTwoColLeft.get("obj0").getPost().getCategory().getTitle()}'> </span>
+                                            <div class="thumb-hover">
+                                                <div class="position-center-center"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <!-- Post Detil -->
+                                    <div class="post-content cat-listing">
+                                        <h4>
+                                            <a th:href='${innerCenterTwoColLeft.get("obj0").getPost().href()}'
+                                               th:text='${innerCenterTwoColLeft.get("obj0").getPost().shortTitle(10)}'></a>
+                                        </h4>
+                                        <p></p>
+
+                                        <ul class="post-wrap-list">
+
+                                            <li class="post-wrap big-post" th:each="i:${#numbers.sequence(1, 2)}">
+                                                <div class="post-thumb lazyImages"
+                                                     th:if='${innerCenterTwoColLeft.containsKey("obj" + i)}'
+                                                     th:src='${innerCenterTwoColLeft.get("obj" + i).getPost().getImgUrls()}'>
+                                                    <img th:alt='${innerCenterTwoColLeft.get("obj" + i).getPost().getTitle()}'>
+                                                </div>
+                                                <div class="post-content"
+                                                     th:if='${innerCenterTwoColLeft.containsKey("obj" + i)}'>
+                                                    <h4>
+                                                        <a th:href='${innerCenterTwoColLeft.get("obj" + i).getPost().href()}'
+                                                           th:text='${innerCenterTwoColLeft.get("obj" + i).getPost().shortTitle(15)}'></a>
+                                                    </h4>
+                                                    <ul class="post-meta">
+                                                        <li th:if='${innerCenterTwoColLeft.get("obj" + i).getPost().showsDate}'
+                                                            th:inline="text">
+                                                            <i class="fa fa-clock-o"></i>[[${innerCenterTwoColLeft.get("obj"
+                                                            + i).getPost().ago()}]]
+                                                        </li>
+                                                        <li th:inline="text"><i class="fa fa-eye"></i>[[${innerCenterTwoColLeft.get("obj"
+                                                            + i).getPost().numberOfViews}]]
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <!-- Post Detail -->
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"
+                                 th:if='${innerCenterTwoColRight.containsKey("obj0")}'>
+
+                                <div class="primary-heading">
+                                    <h2>სიტყვა-სიტყვით</h2>
+                                </div>
+
+                                <div class="post style-2 white-bg light-shadow">
+
+                                    <div class="post-thumb lazyImages"
+                                         th:src='${innerCenterTwoColRight.get("obj0").getPost().getImgUrls()}'>
+                                        <a th:href='${innerCenterTwoColRight.get("obj0").getPost().href()}'>
+                                            <img th:alt='${innerCenterTwoColRight.get("obj0").getPost().getTitle()}'>
+                                            <span class="post-badge"
+                                                  th:styleappend="'background-color: ' + ${innerCenterTwoColRight.get('obj0').getPost().getCategory().getColor()} + ';'"
+                                                  th:text='${innerCenterTwoColRight.get("obj0").getPost().getCategory().getTitle()}'> </span>
+                                            <div class="thumb-hover">
+                                                <div class="position-center-center"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    <div class="post-content cat-listing">
+                                        <h4>
+                                            <a th:href='${innerCenterTwoColRight.get("obj0").getPost().href()}'
+                                               th:text='${innerCenterTwoColRight.get("obj0").getPost().shortTitle(10)}'></a>
+                                        </h4>
+                                        <p></p>
+                                        <ul class="post-wrap-list">
+
+
+                                            <li class="post-wrap big-post" th:each="i:${#numbers.sequence(1,2)}">
+
+                                                <div class="post-thumb lazyImages"
+                                                     th:if='${innerCenterTwoColRight.containsKey("obj" + i)}'
+                                                     th:src='${innerCenterTwoColRight.get("obj" + i).getPost().getImgUrls()}'>
+                                                    <img th:alt='${innerCenterTwoColRight.get("obj" + i).getPost().getTitle()}'>
+                                                </div>
+                                                <div class="post-content"
+                                                     th:if='${innerCenterTwoColRight.containsKey("obj" + i)}'>
+                                                    <h4>
+                                                        <a th:href='${innerCenterTwoColRight.get("obj" + i).getPost().href()}'
+                                                           th:text='${innerCenterTwoColRight.get("obj" + i).getPost().shortTitle(15)}'></a>
+                                                    </h4>
+                                                    <ul class="post-meta">
+                                                        <li th:if='${innerCenterTwoColRight.get("obj" + i).getPost().showsDate}'
+                                                            th:inline="text">
+                                                            <i class="fa fa-clock-o"></i>[[${innerCenterTwoColRight.get("obj"
+                                                            + i).getPost().ago()}]]
+                                                        </li>
+                                                        <li th:inline="text"><i class="fa fa-eye"></i>[[${innerCenterTwoColRight.get("obj"
+                                                            + i).getPost().numberOfViews}]]
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- წიგნები, სიტყვა-სიტყვით -->
+
+                    <!-- მეხუთე ბანერი -->
+                    <div class="add-banner text-center post-widget p-0">
+                        <a href="http://tbilisirc.ge/">
+                            <img src="/uploads/banners/ft728X250.png" alt="FreedomTech TBILISI RC 2018">
+                        </a>
+                    </div>
+                    <!-- მეხუთე ბანერი -->
+
+                    <!-- ყველაზე პოპულარულები -->
+                    <div class="post-widget" th:if="${mostVisited.getTotalPages() > 0}">
+
+                        <!-- Heading -->
+                        <div class="primary-heading">
+                            <h2>ყველაზე პოპულარული</h2>
+                        </div>
+                        <!-- Heading -->
+
+                        <!-- post slider -->
+                        <div class="light-shadow white-bg p-30 slider-post">
+                            <div id="post-slider-2">
+
+                                <!-- post -->
+                                <div class="post style-1" th:each="item: ${mostVisited}">
+
+                                    <!-- post img -->
+                                    <div class="post-thumb lazyImages" th:src='${item.getImgUrls()}'>
+                                        <a th:href="${item.href()}">
+                                            <img th:alt='${item.getTitle()}'>
+                                            <span class="post-badge"
+                                                  th:text="${item.getCategory().getTitle()}"
+                                                  th:styleappend="'background-color: ' + ${item.getCategory().getColor()} + ';'"></span>
+                                            <div class="thumb-hover">
+                                                <div class="position-center-center"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <!-- post img -->
+
+                                    <!-- post details -->
+                                    <div class="post-content">
+                                        <h4><a th:href="${item.href()}" th:text="${item.shortTitle(15)}"></a></h4>
+                                        <ul class="post-meta m-0">
+                                            <li th:if="${item.showsDate}" th:inline="text"><i
+                                                    class="fa fa-clock-o"></i>[[${item.ago()}]]
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- post details -->
+
+                                </div>
+                                <!-- post -->
+
+                            </div>
+                        </div>
+                        <!-- post slider -->
+
+                    </div>
+                    <!-- ყველაზე პოპულარულები -->
+
+                </div>
+
+                <!-- END OF შუა კონტენტი -->
+
+
+                <!-- მარჯვენა საიდბარი  -->
+                <div class="col-lg-3 col-md-3 col-xs-12 custom-re">
+                    <div class="row">
+                        <div th:replace="sideright :: sideright"></div>
+                    </div>
+                </div>
+                <!-- END OF მარჯვენა საიდბარი  -->
+
+            </div>
+        </div>
+    </div>
+</div>

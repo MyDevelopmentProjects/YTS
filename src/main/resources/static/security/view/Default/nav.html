@@ -1,0 +1,72 @@
+<ul class="nav" ng-if="$root.isAuthenticated" ui-nav>
+    <li class="nav-header hidden-folded">
+        <small class="text-muted">სლაიდერი</small>
+    </li>
+    <li>
+        <a ui-sref="app.sliders.category" has-role="SUPER_ADMIN">
+            <span class="nav-icon"><i class="fa fa-th" aria-hidden="true"></i></span>
+            <span class="nav-text">კატეგორია</span>
+        </a>
+    </li>
+    <li>
+        <a ui-sref="app.sliders.list" has-role="SUPER_ADMIN">
+            <span class="nav-icon"><i class="fa fa-sliders" aria-hidden="true"></i></span>
+            <span class="nav-text">ჩანაწერები</span>
+        </a>
+    </li>
+    <li>
+        <a ui-sref="app.sliders.breakingnews" has-role="SUPER_ADMIN">
+            <span class="nav-icon"><i class="fab fa-hotjar" aria-hidden="true"></i></span>
+            <span class="nav-text">ცხელი ამბები</span>
+        </a>
+    </li>
+
+
+
+
+    <li class="nav-header hidden-folded" has-role="SUPER_ADMIN">
+        <small class="text-muted">პოსტები</small>
+    </li>
+
+    <li>
+        <a ui-sref="app.posts.category" has-role="SUPER_ADMIN">
+            <span class="nav-icon"><i class="fa fa-th" aria-hidden="true"></i></span>
+            <span class="nav-text">კატეგორია</span>
+        </a>
+    </li>
+    <li>
+        <a ui-sref="app.posts.list" has-role="SUPER_ADMIN">
+            <span class="nav-icon"><i class="fa fa-files-o" aria-hidden="true"></i></span>
+            <span class="nav-text">ჩანაწერები</span>
+        </a>
+    </li>
+    <li>
+        <a ui-sref="app.tags.list" has-role="SUPER_ADMIN">
+            <span class="nav-icon"><i class="fa fa-tags" aria-hidden="true"></i></span>
+            <span class="nav-text">თეგები</span>
+        </a>
+    </li>
+    <li>
+        <a ui-sref="app.sections.list" has-role="SUPER_ADMIN">
+            <span class="nav-icon"><i class="fas fa-ellipsis-v"></i></span>
+            <span class="nav-text">სექციები</span>
+        </a>
+    </li>
+
+
+    <li class="nav-header hidden-folded" has-role="SUPER_ADMIN">
+        <small class="text-muted">სხვა</small>
+    </li>
+    <li>
+        <a ui-sref="app.quicklinks.list" has-role="SUPER_ADMIN">
+            <span class="nav-icon"><i class="fa fa-link" aria-hidden="true"></i></span>
+            <span class="nav-text">სწრაფი ბმულები</span>
+        </a>
+    </li>
+    <li>
+        <a ui-sref="app.params.list" has-role="SUPER_ADMIN">
+            <span class="nav-icon"><i class="fa fa-briefcase" aria-hidden="true"></i></span>
+            <span class="nav-text">პარამეტრები</span>
+        </a>
+    </li>
+</ul>

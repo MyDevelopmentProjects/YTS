@@ -1,0 +1,229 @@
+<aside class="side-bar grid" th:fragment="sideright" xmlns:th="http://www.w3.org/1999/xhtml">
+
+    <div class="grid-item col-lg-12 col-md-12 col-sm-4 col-xs-6 r-full-width">
+        <div class="widget">
+            <h3 class="secondry-heading">ტოპ სიახლეები</h3>
+            <div class="horizontal-tabs-widget">
+
+                <!-- tabs navs -->
+                <ul class="theme-tab-navs">
+                    <li class="active" th:if="${rightWeek.size > 0}">
+                        <a href="#week" data-toggle="tab">კვირა</a>
+                    </li>
+                    <li>
+                        <a href="#month" th:if="${rightMonth.size > 0}" data-toggle="tab">თვე</a>
+                    </li>
+                    <li>
+                        <a href="#all" th:if="${rightAll.size > 0}" data-toggle="tab">ყველა</a>
+                    </li>
+                </ul>
+                <!-- tabs navs -->
+
+                <!-- Tab panes -->
+                <div class="horizontal-tab-content tab-content">
+                    <div class="tab-pane fade active in" id="week" th:if="${rightWeek.size > 0}">
+                        <ul class="post-wrap-list">
+                            <li th:each="item: ${rightWeek}" class="post-wrap small-post">
+                                <div class="post-thumb lazyImages" th:src='${item.getPost().getImgUrls()}'>
+                                    <a th:href='${item.getPost().href()}'>
+                                        <img th:alt='${item.getPost().getTitle()}'>
+                                        <div class="thumb-hover">
+                                            <div class="position-center-center"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="post-content">
+                                    <h4><a th:href="${item.getPost().href()}"
+                                           th:text="${item.getPost().shortTitle(3) + '...'}"></a></h4>
+                                    <ul class="post-meta">
+                                        <li th:if="${item.post.showsDate}" th:inline="text"><i
+                                                class="fa fa-clock-o"></i>[[${item.post.ago()}]]
+                                        <li><i class="fa fa-comments-o"></i>20</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="month" th:if="${rightMonth.size > 0}">
+                        <ul class="post-wrap-list">
+                            <li th:each="item: ${rightMonth}" class="post-wrap small-post">
+                                <div class="post-thumb lazyImages" th:src='${item.getPost().getImgUrls()}'>
+                                    <a th:href='${item.getPost().href()}'>
+                                        <img th:alt='${item.getPost().getTitle()}'>
+                                        <div class="thumb-hover">
+                                            <div class="position-center-center"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="post-content">
+                                    <h4><a th:href="${item.getPost().href()}"
+                                           th:text="${item.getPost().shortTitle(3) + '...'}"></a></h4>
+                                    <ul class="post-meta">
+                                        <li th:if="${item.post.showsDate}" th:inline="text"><i
+                                                class="fa fa-clock-o"></i>[[${item.post.ago()}]]
+                                        <li><i class="fa fa-comments-o"></i>20</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-pane fade" id="all" th:if="${rightAll.size > 0}">
+                        <ul class="post-wrap-list">
+                            <li th:each="item: ${rightAll}" class="post-wrap small-post">
+                                <div class="post-thumb lazyImages" th:src='${item.getPost().getImgUrls()}'>
+                                    <a th:href='${item.getPost().href()}'>
+                                        <img th:alt='${item.getPost().getTitle()}'>
+                                        <div class="thumb-hover">
+                                            <div class="position-center-center"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="post-content">
+                                    <h4><a th:href="${item.getPost().href()}"
+                                           th:text="${item.getPost().shortTitle(3) + '...'}"></a></h4>
+                                    <ul class="post-meta">
+                                        <li th:if="${item.post.showsDate}" th:inline="text"><i
+                                                class="fa fa-clock-o"></i>[[${item.post.ago()}]]
+                                        <li><i class="fa fa-comments-o"></i>20</li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Tab panes -->
+
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-item col-lg-12 col-md-12 col-sm-4 col-xs-6 r-full-width">
+        <div class="widget">
+            <h3 class="secondry-heading">რეკლამა</h3>
+            <div class="add">
+                <a href="http://swift.com.ge/web/" rel="noopener" target="_blank">
+                    <img src="/uploads/banners/swift.png" alt="Swift, Learning, Study, Exams">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="grid-item col-lg-12 col-md-12 col-sm-4 col-xs-6 r-full-width">
+        <div class="widget">
+            <h3 class="secondry-heading">რამე მარჯვენა</h3>
+            <div class="post style-2 white-bg light-shadow">
+                <div class="post-thumb lazyImages"
+                     th:src='${topCenterTwoCol.get("obj0").getPost().getImgUrls()}'>
+                    <img>
+                    <div class="thumb-hover">
+                        <div class="position-center-center">
+                            <a th:href='${topCenterTwoCol.get("obj0").getPost().href()}' class="fa fa-link"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content cat-listing">
+                    <h4>
+                        <a th:href='${topCenterTwoCol.get("obj0").getPost().href()}'
+                           th:text='${topCenterTwoCol.get("obj0").getPost().shortTitle(7)}'></a>
+                    </h4>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+
+    <div class="grid-item col-lg-12 col-md-12 col-sm-4 col-xs-6 r-full-width">
+        <div class="widget">
+            <h3 class="secondry-heading">რეკლამა</h3>
+            <div class="add">
+                <a href="https://www.facebook.com/bsbgeorgia/" rel="noopener" target="_blank">
+                    <img src="/uploads/banners/bsb.jpg" alt="British School of Business">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-item col-lg-12 col-md-12 col-sm-4 col-xs-6 r-full-width">
+        <div class="widget">
+            <h3 class="secondry-heading">რეკლამა</h3>
+            <div class="add">
+                <a href="http://tbilisirc.ge/">
+                    <img src="/uploads/banners/ft300X500.png" alt="FreedomTech TBILISI RC 2018">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="grid-item col-lg-12 col-md-12 col-sm-4 col-xs-6 r-full-width" th:if="topCenterTwoCol != null">
+        <div class="widget">
+            <h3 class="secondry-heading">რამე მარჯვენა</h3>
+            <div class="post style-2 white-bg light-shadow">
+                <div class="post-thumb lazyImages"
+                     th:src='${topCenterTwoCol.get("obj0").getPost().getImgUrls()}'>
+                    <img>
+                    <div class="thumb-hover">
+                        <div class="position-center-center">
+                            <a th:href='${topCenterTwoCol.get("obj0").getPost().href()}' class="fa fa-link"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content cat-listing">
+                    <h4>
+                        <a th:href='${topCenterTwoCol.get("obj0").getPost().href()}'
+                           th:text='${topCenterTwoCol.get("obj0").getPost().shortTitle(7)}'></a>
+                    </h4>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+    <div class="grid-item col-lg-12 col-md-12 col-sm-4 col-xs-6 r-full-width" th:if="${allTags.size() > 0}">
+        <div class="widget">
+            <h3 class="secondry-heading">პოპულარული თეგები</h3>
+            <div class="populer-tags">
+                <ul>
+                    <li th:each="item: ${allTags}">
+                        <a th:href="'/news/' + ${item.title} + '-' + ${item.id} + '/tag'" th:text="${item.title}"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-item col-lg-12 col-md-12 col-sm-4 col-xs-6 r-full-width">
+        <div class="widget">
+            <h3 class="secondry-heading">გვიპოვე Facebook-ზე</h3>
+            <iframe title="Your trust source" src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/Yts-%E1%83%A8%E1%83%94%E1%83%9C%E1%83%98-%E1%83%A1%E1%83%90%E1%83%9C%E1%83%93%E1%83%9D-%E1%83%AC%E1%83%A7%E1%83%90%E1%83%A0%E1%83%9D-299898507469916/&tabs=timeline&width=290&height=590&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=184536692383604"
+                    width="100%" height="600"
+                    style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+        </div>
+    </div>
+
+    <!--<div class="grid-item col-lg-12 col-md-12 col-sm-4 col-xs-6 r-full-width" th:if="topCenterTwoCol != null">
+        <div class="widget">
+            <h3 class="secondry-heading">რამე მარჯვენა</h3>
+            <div class="post style-2 white-bg light-shadow">
+                <div class="post-thumb lazyImages"
+                     th:src='${topCenterTwoCol.get("obj0").getPost().getImgUrls()}'>
+                    <img>
+                    <div class="thumb-hover">
+                        <div class="position-center-center">
+                            <a th:href='${topCenterTwoCol.get("obj0").getPost().href()}' class="fa fa-link"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content cat-listing">
+                    <h4>
+                        <a th:href='${topCenterTwoCol.get("obj0").getPost().href()}'
+                           th:text='${topCenterTwoCol.get("obj0").getPost().shortTitle(7)}'></a>
+                    </h4>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+
+</aside>
